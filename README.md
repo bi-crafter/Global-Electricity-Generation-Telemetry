@@ -8,6 +8,16 @@
 
 ---
 
+## 📊 EXECUTIVE DASHBOARD PREVIEW
+
+### Page 1: Executive Command Center Overview
+![Page 1: Executive Command Center Overview](docs/images/page1_executive_command_center.png)
+
+### Page 2: Global Renewable Transition & Capacity Growth
+![Page 2: Global Renewable Transition](docs/images/page2_global_renewable_transition.png)
+
+---
+
 ## 📌 EXECUTIVE SUMMARY
 
 The **Global Renewable Energy & Grid Decarbonization Command Center** is a production-grade, enterprise analytics solution built on **Microsoft Fabric**. It unifies real-time grid carbon emissions telemetry, historical generation mix macro-trends, NASA climatological solar/wind vector fields, and World Bank socio-economic indicators into a unified **Direct Lake Semantic Model**. 
@@ -132,7 +142,7 @@ I engineered an end-to-end Microsoft Fabric & Power BI platform that processes g
 • Tracked 313.9 gCO2/kWh grid carbon intensity with 78.5 gCO2 peak load-shifting savings.
 
 📁 Check out the full source code, DAX measure catalog, and Fabric architecture on GitHub:
-👉 [Insert Your GitHub Repo Link Here]
+👉 https://github.com/bi-crafter/Global-Electricity-Generation-Telemetry
 
 #MicrosoftFabric #PowerBI #DataEngineering #PySpark #DirectLake #DAX #BusinessIntelligence #Analytics #DataArchitecture #RenewableEnergy #NetZero
 ```
@@ -149,6 +159,9 @@ renewable_energy/
 │   ├── dax_complete_command_center.dax # 26 Master DAX Measures (Null-Safe & Rounded)
 │   └── dax_measure_catalog.dax        # Core Metric Definitions
 ├── docs/
+│   ├── images/
+│   │   ├── page1_executive_command_center.png   # Dashboard Preview Image 1
+│   │   └── page2_global_renewable_transition.png # Dashboard Preview Image 2
 │   ├── api_data_and_storytelling_guide.md # Field Dictionary & Executive Narrative
 │   ├── enterprise_governance_blueprint.md # Purview & Security Architecture
 │   ├── powerbi_report_step_by_step_guide.md # 7-Page Visual Build Instructions
