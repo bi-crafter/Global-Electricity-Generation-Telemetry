@@ -180,20 +180,3 @@ renewable_energy/
     ├── ddl_dim_country.sql            # dim_country DDL & Insert Script
     └── ddl_gold_star_schema.sql       # Gold Layer T-SQL Schema
 ```
-
----
-
-## 🛠️ HOW TO RUN THIS PROJECT
-
-1. **Deploy Lakehouse & DDLs**:
-   - In Microsoft Fabric workspace `WS_RENEWABLE_ENERGY_ANALYTICS`, create Lakehouse `LH_RENEWABLE_ENERGY`.
-   - Run [`sql/ddl_dim_country.sql`](file:///d:/bi_project/renewable_energy/sql/ddl_dim_country.sql) in SQL Endpoint to create `dim_country`.
-
-2. **Run Pipeline Orchestration**:
-   - Import [`pipelines/PL_MASTER_ENERGY_INGESTION.json`](file:///d:/bi_project/renewable_energy/pipelines/PL_MASTER_ENERGY_INGESTION.json) into Fabric Data Factory.
-   - Execute pipeline `PL_01_Master_Orchestrator` to populate Bronze, Silver, and Gold tables.
-
-3. **Import Power BI Theme & DAX**:
-   - Connect Power BI Desktop to `SM_RENEWABLE_ENERGY` via **Direct Lake**.
-   - Import [`powerbi/theme_command_center.json`](file:///d:/bi_project/renewable_energy/powerbi/theme_command_center.json).
-   - Load DAX measures from [`dax/dax_complete_command_center.dax`](file:///d:/bi_project/renewable_energy/dax/dax_complete_command_center.dax).
