@@ -1,0 +1,230 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "f7e1569d7c114e5b1b31",
+  "position": {
+    "x": 106.61460875223688,
+    "y": 218.94071440191502,
+    "z": 6,
+    "height": 310.32466476097517,
+    "width": 533.07304376118441,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "esriVisual",
+    "query": {
+      "queryState": {
+        "Location": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_energy_generation"
+                    }
+                  },
+                  "Property": "iso_code_3"
+                }
+              },
+              "queryRef": "fact_energy_generation.iso_code_3",
+              "nativeQueryRef": "iso_code_3"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Generation (TWh)"
+                }
+              },
+              "queryRef": "_Measures.Total Generation (TWh)",
+              "nativeQueryRef": "Total Generation (TWh)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Schema": "extension",
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Total Generation (TWh)"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "mapTools": [
+        {
+          "properties": {
+            "basemaps": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "share": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "mapObject": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"portalUrl\":\"https://www.arcgis.com\",\"version\":\"2.4\",\"isAuthorNamedUser\":false,\"map\":{\"webmap\":{\"is3d\":false,\"itemData\":{\"operationalLayers\":[{\"id\":\"MyLayer\",\"visibility\":true,\"opacity\":1,\"minScale\":0,\"maxScale\":0,\"refreshInterval\":0,\"title\":\"iso_code_3\",\"objectIdField\":\"objectId\",\"type\":\"DataLayer\",\"layerType\":\"ArcGISFeatureLayer\",\"popupEnabled\":true,\"disablePopup\":false,\"visible\":true,\"geometryType\":\"point\",\"source\":[{\"attributes\":{},\"geometry\":{\"x\":0,\"y\":0,\"type\":\"point\",\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100}}}],\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"esriMaps\":{\"isTimeEnabled\":\"false\",\"clusterInfo\":null,\"lastShareInfo\":null},\"timeInfo\":null,\"showLabels\":true,\"featureCollection\":{\"layers\":[{\"popupInfo\":{\"popupElements\":[{\"type\":\"fields\",\"fieldInfos\":[{\"fieldName\":\"fact_energy_generation_iso_code_3\",\"isEditable\":true,\"label\":\"iso_code_3\",\"tooltip\":\"\",\"visible\":true},{\"fieldName\":\"expression/_Measures_Total_20Generation_20_TWh_\",\"isEditable\":true,\"label\":\"Total Generation (TWh)\",\"visible\":true},{\"fieldName\":\"ROW_ID\",\"format\":{\"digitSeparator\":true,\"places\":0},\"isEditable\":true,\"label\":\"ROW_ID\",\"tooltip\":\"\",\"visible\":true}]}],\"expressionInfos\":[{\"name\":\"_Measures_Total_20Generation_20_TWh_\",\"title\":\"Total Generation (TWh)\",\"expression\":\"// PowerBI number format: #,0.00\\n\\nif (IsEmpty($feature[\\\"_Measures_Total_20Generation_20_TWh_\\\"]))\\n{\\n  return $feature[\\\"_Measures_Total_20Generation_20_TWh_\\\"] \\n}\\nText($feature[\\\"_Measures_Total_20Generation_20_TWh_\\\"], \\\"#,###.00\\\")\"}],\"fieldInfos\":[{\"fieldName\":\"fact_energy_generation_iso_code_3\",\"isEditable\":true,\"label\":\"iso_code_3\",\"tooltip\":\"\",\"visible\":true},{\"fieldName\":\"_Measures_Total_20Generation_20_TWh_\",\"format\":{\"digitSeparator\":true,\"places\":2},\"isEditable\":true,\"label\":\"Total Generation (TWh)\",\"tooltip\":\"\",\"visible\":false},{\"fieldName\":\"expression/_Measures_Total_20Generation_20_TWh_\",\"isEditable\":true,\"label\":\"Total Generation (TWh)\",\"visible\":true},{\"fieldName\":\"ROW_ID\",\"format\":{\"digitSeparator\":true,\"places\":0},\"isEditable\":true,\"label\":\"ROW_ID\",\"tooltip\":\"\",\"visible\":true}],\"title\":\"\",\"actions\":[]},\"layerDefinition\":{\"objectIdField\":\"objectId\",\"fields\":[{\"alias\":\"objectId\",\"editable\":false,\"name\":\"objectId\",\"nullable\":false,\"type\":\"esriFieldTypeOID\"},{\"alias\":\"iso_code_3\",\"editable\":true,\"length\":-1,\"name\":\"fact_energy_generation_iso_code_3\",\"nullable\":true,\"type\":\"esriFieldTypeString\"},{\"alias\":\"Total Generation (TWh)\",\"editable\":true,\"name\":\"_Measures_Total_20Generation_20_TWh_\",\"nullable\":true,\"type\":\"esriFieldTypeDouble\"},{\"alias\":\"ROW_ID\",\"editable\":true,\"name\":\"ROW_ID\",\"nullable\":true,\"type\":\"esriFieldTypeInteger\"}],\"geometryType\":\"point\",\"drawingInfo\":{\"renderer\":{\"authoringInfo\":{\"classificationMethod\":\"esriClassifyNaturalBreaks\",\"type\":\"classedSize\"},\"type\":\"classBreaks\",\"visualVariables\":[],\"classBreakInfos\":[{\"classMaxValue\":3.423358,\"symbol\":{\"type\":\"esriSMS\",\"color\":[250,168,63,255],\"angle\":0,\"xoffset\":0,\"yoffset\":0,\"size\":3,\"style\":\"esriSMSCircle\",\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"}}},{\"classMaxValue\":10.759233,\"symbol\":{\"type\":\"esriSMS\",\"color\":[250,168,63,255],\"angle\":0,\"xoffset\":0,\"yoffset\":0,\"size\":9.75,\"style\":\"esriSMSCircle\",\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"}}},{\"classMaxValue\":24.357396,\"symbol\":{\"type\":\"esriSMS\",\"color\":[250,168,63,255],\"angle\":0,\"xoffset\":0,\"yoffset\":0,\"size\":16.5,\"style\":\"esriSMSCircle\",\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"}}},{\"classMaxValue\":41.72826,\"symbol\":{\"type\":\"esriSMS\",\"color\":[250,168,63,255],\"angle\":0,\"xoffset\":0,\"yoffset\":0,\"size\":23.25,\"style\":\"esriSMSCircle\",\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"}}},{\"classMaxValue\":155.65940200000003,\"symbol\":{\"type\":\"esriSMS\",\"color\":[250,168,63,255],\"angle\":0,\"xoffset\":0,\"yoffset\":0,\"size\":30,\"style\":\"esriSMSCircle\",\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"}}}],\"defaultLabel\":\"Other\",\"defaultSymbol\":{\"type\":\"esriSMS\",\"color\":[128,128,128,255],\"angle\":0,\"xoffset\":0,\"yoffset\":0,\"size\":3,\"style\":\"esriSMSCircle\",\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,64],\"width\":0.75,\"style\":\"esriSLSSolid\"}},\"field\":\"_Measures_Total_20Generation_20_TWh_\",\"minValue\":0},\"transparency\":0},\"featureReduction\":null,\"locationProvider\":{\"type\":\"cachedgeocode\",\"sourceCountry\":\"world\",\"targetSR\":102100,\"lookupFields\":[{\"lookupField\":\"SingleLine\",\"outField\":\"fact_energy_generation_iso_code_3\"}],\"geocodeServiceUrl\":\"https://utility.arcgis.com/usrsvcs/appservices/L7zl5sI0W1hBHWRI/rest/services/World/GeocodeServer\"},\"minScale\":0,\"maxScale\":0,\"definitionExpression\":null,\"templates\":[{\"name\":\"New Feature\",\"description\":\"\",\"prototype\":{\"attributes\":{\"fact_energy_generation_iso_code_3\":null,\"_Measures_Total_20Generation_20_TWh_\":null,\"ROW_ID\":null}}}],\"elevationInfo\":null,\"name\":\"iso_code_3\",\"type\":\"DataLayer\",\"queryParameters\":{\"tableId\":\"\"}},\"featureSet\":{\"features\":[{\"attributes\":{},\"geometry\":{\"x\":0,\"y\":0,\"type\":\"point\",\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100}}}]}}]}}],\"tables\":[],\"baseMap\":{\"baseMapLayers\":[{\"id\":\"VectorTile_1970\",\"opacity\":1,\"title\":\"Light Gray Base\",\"visibility\":true,\"layerType\":\"VectorTileLayer\",\"styleUrl\":\"https://cdn.arcgis.com/sharing/rest/content/items/291da5eab3a0412593b66d384379f89f/resources/styles/root.json\"},{\"id\":\"VectorTile_7117\",\"opacity\":1,\"title\":\"Light Gray Reference\",\"visibility\":true,\"layerType\":\"VectorTileLayer\",\"styleUrl\":\"https://cdn.arcgis.com/sharing/rest/content/items/1768e8369a214dfab4e2167d5c5f2454/resources/styles/root.json\",\"isReference\":true}],\"title\":\"Light Gray Canvas\"},\"version\":\"2.26\",\"authoringApp\":\"ArcGIS for Power BI\",\"authoringAppVersion\":\"2026.2.992\",\"bookmarks\":[],\"initialState\":{\"viewpoint\":{\"targetGeometry\":{\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"xmin\":-19965897.90588002,\"ymin\":-11789354.891366012,\"xmax\":20343933.33058002,\"ymax\":8796054.070166007}}}}},\"webmapExtensions\":{\"format\":2}},\"embedCheckPassed\":false}'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "geometryCache": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"key\":\"cachedgeocode@@world\",\"compressionMethod\":\"pako\",\"data\":\"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\"}'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Generation Country Wise'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "600fb025385be2aa39b0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fact_energy_generation"
+              }
+            },
+            "Property": "iso_code_3"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "fact_energy_generation",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "f"
+                              }
+                            },
+                            "Property": "iso_code_3"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "867c2631ed1b13086455",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Total Generation (TWh)"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

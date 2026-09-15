@@ -1,0 +1,53 @@
+// =============================================================================
+// Global Renewable Energy & Grid Decarbonization Command Center
+// DAX Measures Catalog
+// =============================================================================
+
+// 1. Total Electricity Generation (GWh)
+Total Generation (GWh) = 
+SUM('fact_energy_generation'[generation_gwh])
+
+// 2. Renewable Generation (GWh)
+Renewable Generation (GWh) = 
+CALCULATE(
+    [Total Generation (GWh)],
+    'dim_energy_technology'[source_category] = "Renewable" || 'dim_energy_technology'[source_category] = "Hydro"
+)
+
+// 3. Fossil Generation (GWh)
+Fossil Generation (GWh) = 
+CALCULATE(
+    [Total Generation (GWh)],
+    'dim_energy_technology'[source_category] = "Fossil"
+)
+
+// 4. Renewable Share %
+Renewable Share % = 
+DIVIDE([Renewable Generation (GWh)], [Total Generation (GWh)], 0) * 100
+
+// 5. Average Carbon Intensity (gCO2eq/kWh)
+Average Carbon Intensity = 
+AVERAGE('fact_carbon_intensity'[carbon_intensity_gco2_kwh])
+
+// 6. YoY Carbon Reduction %
+YoY Carbon Reduction % = 
+VAR CurrentYearCI = [Average Carbon Intensity]
+VAR PriorYearCI = CALCULATE([Average Carbon Intensity], SAMEPERIODLASTYEAR('dim_date'[full_date]))
+RETURN
+DIVIDE(PriorYearCI - CurrentYearCI, PriorYearCI, 0) * 100
+
+// 7. Renewable CAGR (5-Year)
+Renewable CAGR (5Yr) = 
+VAR EndVal = [Renewable Generation (GWh)]
+VAR StartVal = CALCULATE([Renewable Generation (GWh)], DATEADD('dim_date'[full_date], -5, YEAR))
+RETURN
+IF(StartVal > 0 && EndVal > 0, ( (EndVal / StartVal) ^ (1 / 5) ) - 1, BLANK())
+
+// 8. Scenario Emissions Avoided (MtCO2)
+Estimated Emissions Avoided (MtCO2) = 
+VAR BaselineFossilGWh = [Fossil Generation (GWh)]
+VAR SelectedFactor = SELECTEDVALUE('dim_scenario'[fossil_displacement_factor], 1.0)
+VAR ReducedFossilGWh = BaselineFossilGWh * SelectedFactor
+VAR DisplacedGWh = BaselineFossilGWh - ReducedFossilGWh
+RETURN
+(DisplacedGWh * 0.0007) -- Average 0.7 MtCO2 per TWh displaced

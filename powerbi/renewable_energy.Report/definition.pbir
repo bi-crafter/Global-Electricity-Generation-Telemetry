@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
+  "version": "4.0",
+  "datasetReference": {
+    "byConnection": {
+      "connectionString": "Data Source=powerbi://api.powerbi.com/v1.0/myorg/WS_RENEWABLE_ENERGY_ANALYTICS;initial catalog=SM_RENEWABLE_ENERGY;access mode=readonly;integrated security=ClaimsToken;semanticmodelid=d68e032f-727c-4122-ab24-15e93a44a933"
+    }
+  }
+}

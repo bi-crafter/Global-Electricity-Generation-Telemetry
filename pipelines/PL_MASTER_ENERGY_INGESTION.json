@@ -1,0 +1,78 @@
+{
+  "name": "PL_MASTER_ENERGY_INGESTION",
+  "properties": {
+    "description": "Master Metadata-Driven Pipeline for Global Renewable Energy Data Ingestion",
+    "activities": [
+      {
+        "name": "Lookup Active Data Sources",
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "LakehouseTableSource",
+            "sqlReaderQuery": "SELECT * FROM config_data_sources WHERE active = true ORDER BY priority ASC"
+          },
+          "datasetSettings": {
+            "annotations": [],
+            "type": "LakehouseTable"
+          },
+          "firstRowOnly": false
+        }
+      },
+      {
+        "name": "ForEach Active Data Source",
+        "type": "ForEach",
+        "dependsOn": [
+          {
+            "activity": "Lookup Active Data Sources",
+            "dependencyConditions": ["Succeeded"]
+          }
+        ],
+        "typeProperties": {
+          "items": "@activity('Lookup Active Data Sources').output.value",
+          "isSequential": false,
+          "batchCount": 4,
+          "activities": [
+            {
+              "name": "Execute Ingestion Notebook",
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "@concat('NB_INGEST_', replace(item().source_name, ' ', '_'))",
+                "parameters": {
+                  "source_id": { "value": "@item().source_id", "type": "int" },
+                  "target_table": { "value": "@item().target_table", "type": "string" },
+                  "endpoint": { "value": "@item().endpoint", "type": "string" }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Execute Silver Transformations",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "ForEach Active Data Source",
+            "dependencyConditions": ["Succeeded"]
+          }
+        ],
+        "typeProperties": {
+          "notebookId": "NB_TRANSFORM_SILVER_MASTER"
+        }
+      },
+      {
+        "name": "Execute Data Quality Checks",
+        "type": "TridentNotebook",
+        "dependsOn": [
+          {
+            "activity": "Execute Silver Transformations",
+            "dependencyConditions": ["Succeeded"]
+          }
+        ],
+        "typeProperties": {
+          "notebookId": "NB_DATA_QUALITY_ENGINE"
+        }
+      }
+    ]
+  }
+}
