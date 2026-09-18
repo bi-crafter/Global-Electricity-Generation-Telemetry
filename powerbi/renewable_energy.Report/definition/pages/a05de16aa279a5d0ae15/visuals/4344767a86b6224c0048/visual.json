@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "4344767a86b6224c0048",
   "position": {
-    "x": 63.906802579571462,
-    "y": 118.22758477220721,
-    "z": 2,
-    "height": 121.42292490118578,
-    "width": 306.75265238194305,
-    "tabOrder": 2
+    "x": 0,
+    "y": 118.1079832165764,
+    "z": 2000,
+    "height": 104.48013899927912,
+    "width": 311.92621208480432,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -112,7 +112,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'CLEAN GENERATION (TWh)\"'"
+                  "Value": "'CLEAN GENERATION (TWh)'"
                 }
               }
             },
@@ -120,6 +120,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'center'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
                 }
               }
             }

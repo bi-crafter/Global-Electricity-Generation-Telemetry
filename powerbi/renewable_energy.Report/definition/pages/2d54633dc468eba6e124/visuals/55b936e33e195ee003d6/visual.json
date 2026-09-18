@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "974d00bf8607d904d42d",
+  "name": "55b936e33e195ee003d6",
   "position": {
-    "x": 105.99434391231215,
-    "y": 95.394909521080933,
+    "x": 151.656896019747,
+    "y": 101.104597346498,
     "z": 2000,
-    "height": 124.16480286870852,
-    "width": 337.66769560636584,
+    "height": 114.71483160468041,
+    "width": 313.0353879381957,
     "tabOrder": 2000
   },
   "visual": {
@@ -24,12 +24,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Total Generation (TWh)"
+                  "Property": "Clean Replacement Ratio"
                 }
               },
-              "queryRef": "_Measures.Total Generation (TWh)",
-              "nativeQueryRef": "Total Generation (TWh)",
-              "format": "0.000"
+              "queryRef": "_Measures.Clean Replacement Ratio",
+              "nativeQueryRef": "Clean Replacement Ratio"
             }
           ]
         }
@@ -45,7 +44,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Total Generation (TWh)"
+                "Property": "Clean Replacement Ratio"
               }
             },
             "direction": "Descending"
@@ -55,51 +54,6 @@
       }
     },
     "objects": {
-      "outline": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "divider": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "fillCustom": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
       "value": [
         {
           "properties": {
@@ -114,17 +68,6 @@
         },
         {
           "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#00E5FF'"
-                    }
-                  }
-                }
-              }
-            },
             "horizontalAlignment": {
               "expr": {
                 "Literal": {
@@ -169,20 +112,21 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total Electricity Generation TWh'"
+                  "Value": "'CLEAN REPLACEMENT RATIO'"
                 }
               }
-            }
-          }
-        }
-      ],
-      "visualHeader": [
-        {
-          "properties": {
-            "show": {
+            },
+            "alignment": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
                 }
               }
             }

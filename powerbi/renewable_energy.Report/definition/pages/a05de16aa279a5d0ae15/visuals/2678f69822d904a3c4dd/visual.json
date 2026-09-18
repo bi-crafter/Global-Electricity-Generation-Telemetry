@@ -4,10 +4,10 @@
   "position": {
     "x": 810.13945514227771,
     "y": 239.78757657488137,
-    "z": 9,
+    "z": 9000,
     "height": 239.78757657488137,
     "width": 453.88362708816828,
-    "tabOrder": 9
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "donutChart",
@@ -43,11 +43,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Technology Generation (TWh)"
+                  "Property": "Technology Share %"
                 }
               },
               "queryRef": "_Measures.Technology Generation (TWh)",
-              "nativeQueryRef": "Technology Generation (TWh)"
+              "nativeQueryRef": "Technology Share %"
             }
           ]
         }
@@ -63,7 +63,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Technology Generation (TWh)"
+                "Property": "Technology Share %"
               }
             },
             "direction": "Descending"

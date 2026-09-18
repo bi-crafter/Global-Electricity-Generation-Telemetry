@@ -2,15 +2,15 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "87259bdfc61cb2dd6757",
   "position": {
-    "x": 654.918310906598,
-    "y": 228.45987589765045,
-    "z": 8,
-    "height": 300.80550326523974,
-    "width": 557.82286365009645,
-    "tabOrder": 8
+    "x": 604.16776030017922,
+    "y": 219.55971238978944,
+    "z": 4000,
+    "height": 310.41200717177128,
+    "width": 308.89780225873824,
+    "tabOrder": 4000
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -43,11 +43,26 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Solar Generation (TWh)"
+                  "Property": "Global Grid Carbon Intensity"
                 }
               },
-              "queryRef": "_Measures.Solar Generation (TWh)",
-              "nativeQueryRef": "Solar Generation (TWh)"
+              "queryRef": "_Measures.Global Grid Carbon Intensity",
+              "nativeQueryRef": "Global Grid Carbon Intensity"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Clean Energy Generation (TWh)"
+                }
+              },
+              "queryRef": "_Measures.Clean Energy Generation (TWh)",
+              "nativeQueryRef": "Clean Energy Generation (TWh)"
             }
           ]
         }
@@ -63,7 +78,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Solar Generation (TWh)"
+                "Property": "Global Grid Carbon Intensity"
               }
             },
             "direction": "Descending"
@@ -72,6 +87,68 @@
         "isDefaultSort": true
       }
     },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "showGradientLegend": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "visualContainerObjects": {
       "title": [
         {
@@ -79,7 +156,47 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Solar Generation Country wise'"
+                  "Value": "'Carbon Intensity & Clean Energy'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -162,21 +279,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "ad9ed56388ab1e058063",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Schema": "extension",
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Solar Generation (TWh)"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

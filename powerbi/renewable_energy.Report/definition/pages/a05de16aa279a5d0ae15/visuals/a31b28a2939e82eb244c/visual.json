@@ -4,10 +4,10 @@
   "position": {
     "x": 848.36280424381118,
     "y": 479.30101934678595,
-    "z": 10,
+    "z": 10000,
     "height": 239.65050967339297,
     "width": 415.39421676721452,
-    "tabOrder": 10
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -238,66 +238,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "86118f5d76d033966738",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Schema": "extension",
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Clean Energy Generation (TWh)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "17add568033614e70654",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Schema": "extension",
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Global Clean Energy Share %"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "f75aee0cc6a954bc6d7b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Schema": "extension",
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Solar Generation (TWh)"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "99c578684c8b426bb095",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Schema": "extension",
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Wind Generation (TWh)"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

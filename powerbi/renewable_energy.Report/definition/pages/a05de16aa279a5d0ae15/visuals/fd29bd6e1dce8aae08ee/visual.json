@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "3ec3c6605b3e20bc24e2",
+  "name": "fd29bd6e1dce8aae08ee",
   "position": {
-    "x": 592.054120995915,
+    "x": 832.81270216816688,
     "y": 119.62218812960943,
-    "z": 4000,
+    "z": 11000,
     "height": 104.48013899927912,
-    "width": 240.75858117225189,
-    "tabOrder": 4000
+    "width": 245.301195911351,
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -24,11 +24,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Wind Generation (TWh)"
+                  "Property": "Hydro Generation (TWh)"
                 }
               },
-              "queryRef": "_Measures.Wind Generation (TWh)",
-              "nativeQueryRef": "Wind Generation (TWh)"
+              "queryRef": "_Measures.Hydro Generation (TWh)",
+              "nativeQueryRef": "Hydro Generation (TWh)"
             }
           ]
         }
@@ -44,7 +44,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Wind Generation (TWh)"
+                "Property": "Hydro Generation (TWh)"
               }
             },
             "direction": "Descending"
@@ -105,7 +105,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'WIND GENERATION (TWh)\"'"
+                  "Value": "'HYDRO GENERATION (TWh)'"
                 }
               }
             },

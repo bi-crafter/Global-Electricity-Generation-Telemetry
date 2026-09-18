@@ -6,14 +6,9 @@
       "name": "_Measures",
       "measures": [
         {
-          "name": "Total Generation (TWh)",
+          "name": "Technology Generation (TWh)",
           "dataType": "Double",
-          "expression": "\nVAR RawSum = DIVIDE(SUM('fact_energy_generation'[generation_gwh]), 1000, 0)\nRETURN\nROUND(IF(ISBLANK(RawSum) || RawSum == 0, 774.8, RawSum), 1)\n"
-        },
-        {
-          "name": "YoY Generation Growth %",
-          "dataType": "Double",
-          "expression": "\nVAR CurrentGen = [Total Generation (TWh)]\nVAR PriorGen = CALCULATE([Total Generation (TWh)], SAMEPERIODLASTYEAR('dim_date'[full_date]))\nRETURN\nDIVIDE(CurrentGen - PriorGen, PriorGen, 0) * 100\n",
+          "expression": "\n[Total Generation (TWh)]",
           "references": {
             "measures": [
               {
@@ -25,9 +20,23 @@
           }
         },
         {
+          "name": "YoY Generation Growth %",
+          "dataType": "Double",
+          "expression": "\nVAR CurrentGen = [Technology Generation (TWh)]\nVAR PriorGen = CALCULATE([Technology Generation (TWh)], SAMEPERIODLASTYEAR('dim_date'[full_date]))\nRETURN\nDIVIDE(CurrentGen - PriorGen, PriorGen, 0) * 100\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "_Measures",
+                "name": "Technology Generation (TWh)"
+              }
+            ]
+          }
+        },
+        {
           "name": "Clean Energy Generation (TWh)",
           "dataType": "Double",
-          "expression": "\nVAR TotalGen = [Total Generation (TWh)]\nVAR CleanFromDim = \n    CALCULATE(\n        [Total Generation (TWh)],\n        KEEPFILTERS('dim_energy_technology'[is_clean_energy] = TRUE())\n    )\nVAR CountryCode = SELECTEDVALUE('fact_energy_generation'[iso_code_3], SELECTEDVALUE('dim_country'[iso_code_3], \"ALL\"))\nVAR CleanPct = \n    SWITCH(\n        CountryCode,\n        \"BRA\", 0.825,  -- Brazil 82.5% Clean (Hydro)\n        \"FRA\", 0.752,  -- France 75.2% Clean (Nuclear)\n        \"GBR\", 0.583,  -- UK 58.3% Clean (Wind)\n        \"DEU\", 0.548,  -- Germany 54.8% Clean (Solar/Wind)\n        \"USA\", 0.425,  -- USA 42.5% Clean\n        \"CHN\", 0.382,  -- China 38.2% Clean\n        \"JPN\", 0.286,  -- Japan 28.6% Clean\n        \"IND\", 0.254,  -- India 25.4% Clean\n        0.485          -- Global Average 48.5%\n    )\nRETURN\nIF(\n    ISBLANK(TotalGen) || TotalGen == 0,\n    BLANK(),\n    ROUND(IF(NOT ISBLANK(CleanFromDim) && CleanFromDim > 0 && CleanFromDim < TotalGen, CleanFromDim, TotalGen * CleanPct), 1)\n)",
+          "expression": "\nCALCULATE(\n    [Total Generation (TWh)],\n    KEEPFILTERS(\n        'dim_energy_technology'[is_clean_energy] = TRUE() \n        || 'dim_energy_technology'[technology_name] IN { \"Solar\", \"Wind\", \"Hydro\", \"Nuclear\", \"Bioenergy\", \"Geothermal\" }\n    )\n)",
           "references": {
             "measures": [
               {
@@ -41,18 +50,18 @@
         {
           "name": "Global Clean Energy Share %",
           "dataType": "Double",
-          "expression": "\nVAR TotalGen = [Total Generation (TWh)]\nVAR CleanGen = [Clean Energy Generation (TWh)]\nRETURN\nIF(\n    ISBLANK(TotalGen) || TotalGen == 0,\n    BLANK(),\n    ROUND(DIVIDE(CleanGen, TotalGen, 0) * 100, 1)\n)",
+          "expression": "\nVAR _Clean = [Clean Energy Generation (TWh)]\nVAR _Total = [Total Generation (TWh)]\nRETURN\nIF(\n    NOT ISBLANK(_Total) && _Total > 0,\n    DIVIDE(_Clean, _Total, BLANK()) * 100,\n    BLANK()\n)",
           "references": {
             "measures": [
               {
                 "schema": "extension",
                 "entity": "_Measures",
-                "name": "Total Generation (TWh)"
+                "name": "Clean Energy Generation (TWh)"
               },
               {
                 "schema": "extension",
                 "entity": "_Measures",
-                "name": "Clean Energy Generation (TWh)"
+                "name": "Total Generation (TWh)"
               }
             ]
           }
@@ -74,7 +83,7 @@
         {
           "name": "Global Grid Carbon Intensity",
           "dataType": "Double",
-          "expression": "\nVAR CalculatedCI = AVERAGE('fact_carbon_intensity'[carbon_intensity_gco2_kwh])\nRETURN\nROUND(IF(ISBLANK(CalculatedCI) || CalculatedCI == 0, 313.9, CalculatedCI), 1)\n"
+          "expression": "\nCALCULATE(\n    AVERAGE('fact_carbon_intensity'[carbon_intensity_gco2_kwh]),\n    USERELATIONSHIP('fact_carbon_intensity'[iso_code_3], 'dim_country'[iso_code_3])\n)"
         },
         {
           "name": "YoY Carbon Intensity Reduction %",
@@ -93,7 +102,7 @@
         {
           "name": "Solar Generation (TWh)",
           "dataType": "Double",
-          "expression": "\nVAR TotalGen = [Total Generation (TWh)]\nVAR SolarCalc = CALCULATE([Total Generation (TWh)], LOWER('dim_energy_technology'[technology_name]) = \"solar\")\nRETURN\nROUND(\n    IF(SolarCalc > 0 && SolarCalc < TotalGen, SolarCalc, TotalGen * 0.22),\n    1\n)",
+          "expression": "\nCALCULATE(\n    [Total Generation (TWh)],\n    KEEPFILTERS(\n        'dim_energy_technology'[technology_name] = \"Solar\" \n        || 'dim_energy_technology'[technology_key] = 1\n    )\n)",
           "references": {
             "measures": [
               {
@@ -107,7 +116,7 @@
         {
           "name": "Wind Generation (TWh)",
           "dataType": "Double",
-          "expression": "\nVAR TotalGen = [Total Generation (TWh)]\nVAR WindCalc = CALCULATE([Total Generation (TWh)], LOWER('dim_energy_technology'[technology_name]) = \"wind\")\nRETURN\nROUND(\n    IF(WindCalc > 0 && WindCalc < TotalGen, WindCalc, TotalGen * 0.18),\n    1\n)",
+          "expression": "\nCALCULATE(\n    [Total Generation (TWh)],\n    KEEPFILTERS('dim_energy_technology'[technology_name] = \"Wind\")\n)",
           "references": {
             "measures": [
               {
@@ -178,7 +187,7 @@
         {
           "name": "Fossil Generation (TWh)",
           "dataType": "Double",
-          "expression": "\nVAR TotalGen = [Total Generation (TWh)]\nVAR FossilCalc = CALCULATE([Total Generation (TWh)], LOWER('dim_energy_technology'[source_category]) = \"fossil\")\nRETURN\nROUND(\n    IF(FossilCalc > 0 && FossilCalc < TotalGen, FossilCalc, TotalGen * 0.515),\n    1\n)",
+          "expression": "\nCALCULATE(\n    [Total Generation (TWh)],\n    KEEPFILTERS(\n        'dim_energy_technology'[technology_key] IN { 7, 8, 9 }\n        || 'dim_energy_technology'[is_clean_energy] = FALSE()\n    )\n)",
           "references": {
             "measures": [
               {
@@ -192,7 +201,7 @@
         {
           "name": "Fossil Dependency Share %",
           "dataType": "Double",
-          "expression": "\nDIVIDE([Fossil Generation (TWh)], [Total Generation (TWh)], 0) * 100\n",
+          "expression": "\nDIVIDE([Fossil Generation (TWh)], [Technology Generation (TWh)], 0) * 100\n",
           "references": {
             "measures": [
               {
@@ -203,7 +212,7 @@
               {
                 "schema": "extension",
                 "entity": "_Measures",
-                "name": "Total Generation (TWh)"
+                "name": "Technology Generation (TWh)"
               }
             ]
           }
@@ -290,10 +299,128 @@
           }
         },
         {
-          "name": "Technology Generation (TWh)",
+          "name": "Technology Share %",
           "dataType": "Double",
-          "expression": "\nVAR TechName = SELECTEDVALUE('dim_energy_technology'[technology_name], \"Solar\")\nVAR CleanGen = [Clean Energy Generation (TWh)]\nRETURN\nSWITCH(\n    LOWER(TechName),\n    \"solar\", ROUND(CleanGen * 0.453, 1),      -- Solar 45.3%\n    \"wind\", ROUND(CleanGen * 0.371, 1),       -- Wind 37.1%\n    \"hydro\", ROUND(CleanGen * 0.114, 1),      -- Hydro 11.4%\n    \"nuclear\", ROUND(CleanGen * 0.042, 1),    -- Nuclear 4.2%\n    \"bioenergy\", ROUND(CleanGen * 0.015, 1),  -- Bioenergy 1.5%\n    \"geothermal\", ROUND(CleanGen * 0.005, 1), -- Geothermal 0.5%\n    ROUND(CleanGen * 0.167, 1)\n)\n",
-          "formatString": "General Number",
+          "expression": "\nVAR _CurrentTechGen = [Technology Generation (TWh)]\nVAR _AllTechGen = \n    CALCULATE(\n        [Technology Generation (TWh)],\n        ALLSELECTED(dim_energy_technology[technology_name])\n    )\nRETURN\nDIVIDE(_CurrentTechGen, _AllTechGen, BLANK())",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "_Measures",
+                "name": "Technology Generation (TWh)"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Total Generation (TWh)",
+          "dataType": "Double",
+          "expression": "\nVAR _RawGWh = SUM('fact_energy_generation'[generation_gwh])\nRETURN\nIF(ISBLANK(_RawGWh), BLANK(), DIVIDE(_RawGWh, 1000, 0))"
+        },
+        {
+          "name": "Hydro Generation (TWh)",
+          "dataType": "Double",
+          "expression": "\nCALCULATE(\n    [Total Generation (TWh)],\n    KEEPFILTERS(\n        'dim_energy_technology'[technology_key] = 3 \n        || 'dim_energy_technology'[technology_name] = \"Hydro\"\n    )\n)",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "_Measures",
+                "name": "Total Generation (TWh)"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Nuclear Generation (TWh)",
+          "dataType": "Double",
+          "expression": "\nCALCULATE(\n    [Total Generation (TWh)],\n    KEEPFILTERS(\n        'dim_energy_technology'[technology_key] = 4 \n        || 'dim_energy_technology'[technology_name] = \"Nuclear\"\n    )\n)",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "_Measures",
+                "name": "Total Generation (TWh)"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Gas Generation (TWh)",
+          "dataType": "Double",
+          "expression": "\nCALCULATE(\n    [Total Generation (TWh)],\n    KEEPFILTERS(\n        'dim_energy_technology'[technology_key] = 8 \n        || 'dim_energy_technology'[technology_name] = \"Gas\"\n    )\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "_Measures",
+                "name": "Total Generation (TWh)"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Coal Generation (TWh)",
+          "dataType": "Double",
+          "expression": "\nCALCULATE(\n    [Total Generation (TWh)],\n    KEEPFILTERS(\n        'dim_energy_technology'[technology_key] = 7 \n        || 'dim_energy_technology'[technology_name] = \"Coal\"\n    )\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "_Measures",
+                "name": "Total Generation (TWh)"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Clean Replacement Ratio",
+          "dataType": "Double",
+          "expression": "\nVAR _Clean = [Clean Energy Generation (TWh)]\nVAR _Fossil = [Fossil Generation (TWh)]\nRETURN\nIF(\n    NOT ISBLANK(_Fossil) && _Fossil > 0,\n    DIVIDE(_Clean, _Fossil, BLANK()),\n    BLANK()\n)",
+          "formatString": "0.000",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "_Measures",
+                "name": "Clean Energy Generation (TWh)"
+              },
+              {
+                "schema": "extension",
+                "entity": "_Measures",
+                "name": "Fossil Generation (TWh)"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Grid Carbon Anomaly Rate %",
+          "dataType": "Double",
+          "expression": "\nVAR _TotalHours = \n    CALCULATE(\n        COUNTROWS('fact_carbon_intensity'),\n        USERELATIONSHIP('fact_carbon_intensity'[iso_code_3], 'dim_country'[iso_code_3])\n    )\nVAR _AnomalyHours = \n    CALCULATE(\n        COUNTROWS('fact_carbon_intensity'),\n        'fact_carbon_intensity'[is_anomaly] = TRUE(),\n        USERELATIONSHIP('fact_carbon_intensity'[iso_code_3], 'dim_country'[iso_code_3])\n    )\nRETURN\nDIVIDE(_AnomalyHours, _TotalHours, 0)",
+          "formatString": "0.0\\ %;-0.0\\ %;0.0\\ %"
+        },
+        {
+          "name": "Displaced Carbon Savings (MtCO2e)",
+          "dataType": "Double",
+          "expression": "\nVAR _CleanMWh = [Clean Energy Generation (TWh)] * 1000000\nVAR _AvoidedFactorKg = 0.55 -- Standard displaced fossil baseline (550 gCO2/kWh)\nRETURN\nDIVIDE(_CleanMWh * _AvoidedFactorKg, 1000000000, BLANK())",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "_Measures",
+                "name": "Clean Energy Generation (TWh)"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Scenario Projected Clean Gen (TWh)",
+          "dataType": "Double",
+          "expression": "\nVAR _BaseClean = [Clean Energy Generation (TWh)]\nVAR _ScenarioLift = SELECTEDVALUE('dim_scenario'[target_penetration_pct], 0.0)\nRETURN\n_BaseClean * (1 + _ScenarioLift)",
+          "formatString": "0.0",
           "references": {
             "measures": [
               {

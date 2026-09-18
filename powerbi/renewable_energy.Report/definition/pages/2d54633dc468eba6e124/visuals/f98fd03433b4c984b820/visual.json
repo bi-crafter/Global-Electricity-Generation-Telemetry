@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "e7e3ba440cd31ee08e54",
+  "name": "f98fd03433b4c984b820",
   "position": {
-    "x": 67.102142708550033,
+    "x": 65.504472644060755,
     "y": 14.37903058040358,
     "z": 1000,
-    "height": 65.504472644060755,
-    "width": 1145.5294362388186,
+    "height": 73.492822966507177,
+    "width": 1150.3224464322864,
     "tabOrder": 1000
   },
   "visual": {
@@ -19,31 +19,17 @@
               {
                 "textRuns": [
                   {
-                    "value": "GLOBAL RENEWABLE ENERGY & GRID DECARBONIZATION COMMAND CENTER",
+                    "value": "GRID DECARBONIZATION & FORWARD SCENARIO COMMAN",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontSize": "20pt",
-                      "color": "#00e5ff"
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "20pt"
                     }
                   }
-                ]
+                ],
+                "horizontalTextAlignment": "center"
               }
             ]
-          }
-        }
-      ]
-    },
-    "visualContainerObjects": {
-      "background": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
           }
         }
       ]

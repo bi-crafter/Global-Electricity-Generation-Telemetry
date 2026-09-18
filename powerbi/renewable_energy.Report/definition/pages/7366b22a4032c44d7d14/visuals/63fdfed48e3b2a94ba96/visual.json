@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "974d00bf8607d904d42d",
+  "name": "63fdfed48e3b2a94ba96",
   "position": {
-    "x": 105.99434391231215,
-    "y": 95.394909521080933,
-    "z": 2000,
-    "height": 124.16480286870852,
-    "width": 337.66769560636584,
-    "tabOrder": 2000
+    "x": 953.94909521080933,
+    "y": 104.48013899927912,
+    "z": 9000,
+    "height": 115.07957339051033,
+    "width": 269.52847451987947,
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -24,12 +24,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Total Generation (TWh)"
+                  "Property": "Global Grid Carbon Intensity"
                 }
               },
-              "queryRef": "_Measures.Total Generation (TWh)",
-              "nativeQueryRef": "Total Generation (TWh)",
-              "format": "0.000"
+              "queryRef": "_Measures.Global Grid Carbon Intensity",
+              "nativeQueryRef": "Global Grid Carbon Intensity"
             }
           ]
         }
@@ -45,7 +44,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Total Generation (TWh)"
+                "Property": "Global Grid Carbon Intensity"
               }
             },
             "direction": "Descending"
@@ -169,7 +168,14 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total Electricity Generation TWh'"
+                  "Value": "'Carbon Intensity'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
                 }
               }
             }

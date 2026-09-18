@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "530cd3f7d00775212197",
   "position": {
-    "x": 738.68693206906971,
-    "y": 98.999279555648528,
-    "z": 11,
-    "height": 123.74909944456066,
-    "width": 257.01736038485677,
-    "tabOrder": 11
+    "x": 679.8780059518308,
+    "y": 104.48013899927912,
+    "z": 6000,
+    "height": 115.07957339051033,
+    "width": 183.21879447699672,
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -168,7 +168,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Solar Electricity'"
+                  "Value": "'Fossil Energy'"
                 }
               }
             },

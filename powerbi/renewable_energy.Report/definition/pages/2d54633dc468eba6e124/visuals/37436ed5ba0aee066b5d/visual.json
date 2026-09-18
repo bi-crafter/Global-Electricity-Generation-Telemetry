@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "974d00bf8607d904d42d",
+  "name": "37436ed5ba0aee066b5d",
   "position": {
-    "x": 105.99434391231215,
-    "y": 95.394909521080933,
-    "z": 2000,
-    "height": 124.16480286870852,
-    "width": 337.66769560636584,
-    "tabOrder": 2000
+    "x": 976.04822822965366,
+    "y": 103.04891652623833,
+    "z": 5000,
+    "height": 112.77051242494007,
+    "width": 287.75923860157121,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -24,12 +24,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Total Generation (TWh)"
+                  "Property": "Scenario Projected Clean Gen (TWh)"
                 }
               },
-              "queryRef": "_Measures.Total Generation (TWh)",
-              "nativeQueryRef": "Total Generation (TWh)",
-              "format": "0.000"
+              "queryRef": "_Measures.Scenario Projected Clean Gen (TWh)",
+              "nativeQueryRef": "Scenario Projected Clean Gen (TWh)"
             }
           ]
         }
@@ -45,7 +44,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Total Generation (TWh)"
+                "Property": "Scenario Projected Clean Gen (TWh)"
               }
             },
             "direction": "Descending"
@@ -55,51 +54,6 @@
       }
     },
     "objects": {
-      "outline": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "divider": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "fillCustom": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
       "value": [
         {
           "properties": {
@@ -114,17 +68,6 @@
         },
         {
           "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#00E5FF'"
-                    }
-                  }
-                }
-              }
-            },
             "horizontalAlignment": {
               "expr": {
                 "Literal": {
@@ -169,20 +112,21 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total Electricity Generation TWh'"
+                  "Value": "'Scenario Clean Generation'"
                 }
               }
-            }
-          }
-        }
-      ],
-      "visualHeader": [
-        {
-          "properties": {
-            "show": {
+            },
+            "alignment": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
                 }
               }
             }

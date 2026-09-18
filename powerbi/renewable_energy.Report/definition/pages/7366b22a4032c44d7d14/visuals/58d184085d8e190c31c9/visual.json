@@ -4,10 +4,10 @@
   "position": {
     "x": 738.931997560119,
     "y": 539.05694903975893,
-    "z": 14,
+    "z": 8000,
     "height": 180.19038465093067,
     "width": 473.94613777933859,
-    "tabOrder": 13
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "lineChart",
@@ -217,21 +217,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "96f5000fac2c0d783b9b",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Schema": "extension",
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Wind Generation (TWh)"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

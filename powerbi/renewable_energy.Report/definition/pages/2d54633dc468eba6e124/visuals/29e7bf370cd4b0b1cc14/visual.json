@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "974d00bf8607d904d42d",
+  "name": "29e7bf370cd4b0b1cc14",
   "position": {
-    "x": 105.99434391231215,
-    "y": 95.394909521080933,
-    "z": 2000,
-    "height": 124.16480286870852,
-    "width": 337.66769560636584,
-    "tabOrder": 2000
+    "x": 713.565138964707,
+    "y": 103.04891652623833,
+    "z": 4000,
+    "height": 112.77051242494007,
+    "width": 262.48308926494673,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -24,12 +24,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Total Generation (TWh)"
+                  "Property": "Displaced Carbon Savings (MtCO2e)"
                 }
               },
-              "queryRef": "_Measures.Total Generation (TWh)",
-              "nativeQueryRef": "Total Generation (TWh)",
-              "format": "0.000"
+              "queryRef": "_Measures.Displaced Carbon Savings (MtCO2e)",
+              "nativeQueryRef": "Displaced Carbon Savings (MtCO2e)"
             }
           ]
         }
@@ -45,7 +44,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Total Generation (TWh)"
+                "Property": "Displaced Carbon Savings (MtCO2e)"
               }
             },
             "direction": "Descending"
@@ -55,51 +54,6 @@
       }
     },
     "objects": {
-      "outline": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "divider": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "fillCustom": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          }
-        }
-      ],
       "value": [
         {
           "properties": {
@@ -114,17 +68,6 @@
         },
         {
           "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#00E5FF'"
-                    }
-                  }
-                }
-              }
-            },
             "horizontalAlignment": {
               "expr": {
                 "Literal": {
@@ -169,20 +112,21 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Total Electricity Generation TWh'"
+                  "Value": "'DISPLACED CARBON (MtCO₂e)'"
                 }
               }
-            }
-          }
-        }
-      ],
-      "visualHeader": [
-        {
-          "properties": {
-            "show": {
+            },
+            "alignment": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
                 }
               }
             }

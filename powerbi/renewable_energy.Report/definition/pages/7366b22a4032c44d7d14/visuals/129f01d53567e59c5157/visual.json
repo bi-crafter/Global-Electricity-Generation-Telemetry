@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
   "name": "129f01d53567e59c5157",
   "position": {
-    "x": 502.61172697483096,
-    "y": 98.999279555648528,
-    "z": 9,
-    "height": 123.74909944456066,
-    "width": 236.07520509423878,
-    "tabOrder": 9
+    "x": 454.26147390990923,
+    "y": 104.48013899927912,
+    "z": 5000,
+    "height": 115.07957339051033,
+    "width": 211.98868782462429,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -24,11 +24,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Wind Generation (TWh)"
+                  "Property": "Clean Energy Generation (TWh)"
                 }
               },
-              "queryRef": "_Measures.Wind Generation (TWh)",
-              "nativeQueryRef": "Wind Generation (TWh)"
+              "queryRef": "_Measures.Clean Energy Generation (TWh)",
+              "nativeQueryRef": "Clean Energy Generation (TWh)"
             }
           ]
         }
@@ -44,7 +44,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Wind Generation (TWh)"
+                "Property": "Clean Energy Generation (TWh)"
               }
             },
             "direction": "Descending"
@@ -168,7 +168,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Wind Electricity'"
+                  "Value": "'Clean Energy'"
                 }
               }
             },

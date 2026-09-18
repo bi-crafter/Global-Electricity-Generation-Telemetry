@@ -4,10 +4,10 @@
   "position": {
     "x": 10.276610424637774,
     "y": 262.05356582826323,
-    "z": 6,
+    "z": 6000,
     "height": 457.30916389638088,
     "width": 301.447239122708,
-    "tabOrder": 6
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -162,21 +162,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "451399ebec32bb632c03",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Schema": "extension",
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Clean Energy Generation (TWh)"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }
